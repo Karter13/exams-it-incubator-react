@@ -1,0 +1,39 @@
+.App {
+  text-align: center;
+}
+.desk {
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+  text-align: center;
+  border: 2px solid gray;
+  border-radius: 5%;
+}
+.scoreboard {
+  margin: 5px 5px 15px 5px;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 4.5em;
+}
+.buttons-block {
+  height: 50px;
+  margin: 5px;
+  padding: 5px;
+}
+.buttons button {
+  width: 100px;
+  height: 40px;
+  font-weight: bold;
+  font-size: large;
+}
+.buttons-inc {
+  margin-right: 10px;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.button-red {
+  color: red;
+}
