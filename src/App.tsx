@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
-import {ButtonsGroup} from './Components/Buttons';
-import {Scoreboard} from './Components/Scoreboard';
+import {Counter} from './Components/Counter/Counter';
+import {Settings} from './Components/Settings/Settings';
 
 
 export function App() {
@@ -16,20 +16,14 @@ export function App() {
     };
 
     return (
-        <div className='desk'>
-            <div className='scoreboard'>
-                <Scoreboard count={count}/>
-            </div>
-            <div className='buttons-block'>
-                <ButtonsGroup count={count} resetCount={resetCount} incCount={incCount}/>
-
-            </div>
+        <div className={'counter'}>
+            <Settings/>
+            <Counter count={count}
+                     incCount={incCount}
+                     resetCount={resetCount}
+            />
         </div>
     )
 }
-
-
-
-
 
 

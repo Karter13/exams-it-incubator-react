@@ -1,39 +1,105 @@
-.App {
-  text-align: center;
+body {
+  background-color: #c4c8cc;
 }
+.counter {
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+}
+
 .desk {
-  width: 300px;
-  height: 200px;
-  margin: 0 auto;
-  text-align: center;
-  border: 2px solid gray;
-  border-radius: 5%;
+    width: 300px;
+    height: 200px;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #808080;
+    border-radius: 20px;
+    background-color: #716a8b;
 }
+
 .scoreboard {
-  margin: 5px 5px 15px 5px;
-  padding: 5px;
-  font-weight: bold;
-  font-size: 4.5em;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 4.5em;
+    border-radius: 20px;
+    border: 2px solid gray;
+    background-color: #c4c8cc;
 }
+
 .buttons-block {
-  height: 50px;
-  margin: 5px;
-  padding: 5px;
+    height: 50px;
+    margin-top: 20px;
+    padding: 15px 5px;
+    background-color: #c4c8cc;
+    border-radius: 20px;
 }
+
 .buttons button {
-  width: 100px;
-  height: 40px;
-  font-weight: bold;
-  font-size: large;
+    width: 120px;
+    height: 50px;
+    font-weight: bold;
+    font-size: large;
+    background-color: #716a8b;
 }
+
 .buttons-inc {
-  margin-right: 10px;
+    margin-right: 15px;
 }
+
 .buttons {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .button-red {
-  color: red;
+    color: red;
+}
+
+.settings {
+    width: 300px;
+    height: 200px;
+    padding: 20px;
+    text-align: center;
+    margin-right: 20px;
+    border: 2px solid gray;
+    border-radius: 20px;
+    background-color: #716a8b;
+}
+
+.values {
+  padding: 5px;
+  font-weight: bold;
+  font-size: larger;
+  height: 50%;
+  border-radius: 20px;
+  border: 2px solid gray;
+  background-color: #c4c8cc;
+
+}
+
+.value {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.value input{
+  width: 50%;
+  margin-left: 20px;
+}
+
+.set {
+  height: 50px;
+  margin-top: 20px;
+  padding: 10px 5px;
+  background-color: #c4c8cc;
+  border-radius: 20px;
+}
+
+.set button{
+  width: 120px;
+  height: 50px;
+  font-weight: bold;
+  font-size: large;
+  background-color: #716a8b;
 }
