@@ -6,7 +6,18 @@ import {Settings} from './Components/Settings/Settings';
 
 export function App() {
 
-    const [count, setCount] = useState<number>(0);
+    let valueFromLocalStorage = () => {
+        let loc = localStorage.getItem('key12');
+        if (loc) {
+            return Number(JSON.parse(loc).count);
+        } else {
+            return 0;
+        }
+
+    };
+
+
+    const [count, setCount] = useState<number>(valueFromLocalStorage());
 
     const incCount = () => {
         setCount(count + 1);
@@ -17,7 +28,7 @@ export function App() {
 
     return (
         <div className={'counter'}>
-            <Settings/>
+            <Settings />
             <Counter count={count}
                      incCount={incCount}
                      resetCount={resetCount}
