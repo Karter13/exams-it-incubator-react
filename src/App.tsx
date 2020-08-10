@@ -6,18 +6,20 @@ import {Settings} from './Components/Settings/Settings';
 
 export function App() {
 
-    let valueFromLocalStorage = () => {
+    const [count, setCount] = useState<number>(valueFromLocalStorage ());
+
+    function valueFromLocalStorage (){
         let loc = localStorage.getItem('key12');
+        console.log(loc);
         if (loc) {
-            return Number(JSON.parse(loc).count);
+            console.log(JSON.parse(loc));
+
+            return Number(JSON.parse(loc));
         } else {
             return 0;
         }
+    }
 
-    };
-
-
-    const [count, setCount] = useState<number>(valueFromLocalStorage());
 
     const incCount = () => {
         setCount(count + 1);
