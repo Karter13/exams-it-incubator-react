@@ -10,17 +10,19 @@ export type CountType = {
 
 export function App() {
 //fixed
-    const [count, setCount] = useState<CountType>({min: 0, max: 10});
+    const [count, setCount] = useState<CountType>(valueFromLocalStorage());
 
     function valueFromLocalStorage() {
         let loc = localStorage.getItem('key12');
-
         if (loc) {
             let newCounter = JSON.parse(loc);
-            console.log(newCounter);
-            setCount(newCounter)
+            return {
+                min: newCounter.min,
+                max: +newCounter.max
+            }
+
         } else {
-            return count;
+            return {min: 0, max: 1};
         }
     }
 
@@ -35,7 +37,7 @@ export function App() {
     };
     const resetCount = () => {
         let loc = localStorage.getItem('key12');
-        if(loc) {
+        if (loc) {
             let minCount = JSON.parse(loc)
             let counterReset = {
                 ...count,

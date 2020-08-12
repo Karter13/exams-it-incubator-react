@@ -30,10 +30,14 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
     };
 
     let func = () => {
-        localStorage.setItem('key12', JSON.stringify({min: minValue, max: maxValue}));
-        let newCounterValue = { min: +minValue, max: +maxValue };
-        console.log(newCounterValue);
-        props.addNewValue(newCounterValue);
+        if(minValue === maxValue || minValue > maxValue || minValue < 0) {
+            console.log('BAD VALUES')
+        } else {
+            localStorage.setItem('key12', JSON.stringify({min: minValue, max: maxValue}));
+            let newCounterValue = { min: +minValue, max: +maxValue };
+            console.log(newCounterValue);
+            props.addNewValue(newCounterValue);
+        }
     };
 
     return (
