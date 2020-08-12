@@ -3,34 +3,56 @@ import './App.css';
 import {Counter} from './Components/Counter/Counter';
 import {Settings} from './Components/Settings/Settings';
 
+export type CountType = {
+    min: number
+    max: number
+}
 
 export function App() {
+//fixed
+    const [count, setCount] = useState<CountType>({min: 0, max: 10});
 
-    const [count, setCount] = useState<number>(valueFromLocalStorage ());
-
-    function valueFromLocalStorage (){
+    function valueFromLocalStorage() {
         let loc = localStorage.getItem('key12');
-        console.log(loc);
-        if (loc) {
-            console.log(JSON.parse(loc));
 
-            return Number(JSON.parse(loc));
+        if (loc) {
+            let newCounter = JSON.parse(loc);
+            console.log(newCounter);
+            setCount(newCounter)
         } else {
-            return 0;
+            return count;
         }
     }
 
 
     const incCount = () => {
-        setCount(count + 1);
+        let newCountMin = {
+            ...count,
+            min: count.min + 1
+        };
+        setCount(newCountMin);
+
     };
     const resetCount = () => {
-        setCount(0)
+        let loc = localStorage.getItem('key12');
+        if(loc) {
+            let minCount = JSON.parse(loc)
+            let counterReset = {
+                ...count,
+                min: count.min = +minCount.min
+            };
+            setCount(counterReset);
+        }
+    };
+
+    const addNewCounterValue = (value: CountType) => {
+        setCount(value)
     };
 
     return (
         <div className={'counter'}>
-            <Settings />
+            <Settings addNewValue={addNewCounterValue}
+                      count={count}/>
             <Counter count={count}
                      incCount={incCount}
                      resetCount={resetCount}

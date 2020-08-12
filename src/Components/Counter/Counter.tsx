@@ -1,9 +1,10 @@
 import React from 'react';
 import {Scoreboard} from './Scoreboard';
 import {ButtonsGroup} from './Buttons';
+import {CountType} from '../../App';
 
 export type CounterPropsType = {
-    count: number
+    count: CountType
     resetCount: () => void
     incCount: () => void
 }

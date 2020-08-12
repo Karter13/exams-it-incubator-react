@@ -1,31 +1,39 @@
 import React, {ChangeEvent, useState} from 'react';
+import {CountType} from '../../App';
 
-export type SettingsPropsType = {}
-export const Settings = () => {
-    const [maxValue, setMaxValue] = useState('1');
-    const [minValue, setMinValue] = useState('0');
+export type SettingsPropsType = {
+    addNewValue: (newCounterValue: CountType) => void;
+    count: CountType
+}
+export const Settings: React.FC<SettingsPropsType> = (props) => {
+    const [maxValue, setMaxValue] = useState(props.count.max);
+    const [minValue, setMinValue] = useState(props.count.min);
+
     const changeMaxValue = (value: string) => {
         if (+value === +minValue || +value < 0 || +value < +minValue) {
-            setMaxValue(value);
+            setMaxValue(+value);
             console.log('Incorrect value')
         } else {
-            setMaxValue(value);
+            setMaxValue(+value);
             console.log('Enter values and press "set"')
         }
     };
 
     const changeMinValue = (value: string) => {
         if (+value === +maxValue || +value < 0 || +value > +maxValue) {
-            setMinValue(value);
+            setMinValue(+value);
             console.log('Incorrect value')
         } else {
-            setMinValue(value);
+            setMinValue(+value);
             console.log('Enter values and press "set"')
         }
     };
 
     let func = () => {
-        localStorage.setItem('key12', JSON.stringify({min: minValue, max: maxValue}))
+        localStorage.setItem('key12', JSON.stringify({min: minValue, max: maxValue}));
+        let newCounterValue = { min: +minValue, max: +maxValue };
+        console.log(newCounterValue);
+        props.addNewValue(newCounterValue);
     };
 
     return (
@@ -41,8 +49,8 @@ export const Settings = () => {
 type ParametersType = {
     changeMaxValue: (value: string) => void
     changeMinValue: (value: string) => void
-    maxValue: string
-    minValue: string
+    maxValue: number
+    minValue: number
 }
 
 export const Parameters: React.FC<ParametersType> = (props) => {
@@ -54,7 +62,6 @@ export const Parameters: React.FC<ParametersType> = (props) => {
     const sendMinValue = (e: ChangeEvent<HTMLInputElement>) => {
         props.changeMinValue(e.currentTarget.value)
     };
-
 
     return (
         <div className={'values'}>

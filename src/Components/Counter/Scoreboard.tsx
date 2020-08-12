@@ -1,11 +1,12 @@
 import React from 'react';
+import {CountType} from '../../App';
 
 export type ScoreboardPropsType = {
-    count: number;
+    count: CountType;
 }
 
 export const Scoreboard: React.FC<ScoreboardPropsType> = (props) => {
     return (
-        <div className={props.count === 5 ? 'button-red' : ''}>{props.count}</div>
+        <div className={props.count.min === props.count.max ? 'button-red' : ''}>{props.count.min}</div>
     )
 };

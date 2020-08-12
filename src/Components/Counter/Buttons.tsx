@@ -1,10 +1,11 @@
 import React from 'react';
 import {Button} from '../Button/Button';
+import {CountType} from '../../App';
 
 export type ButtonsPropsType = {
     resetCount: () => void
     incCount: () => void
-    count: number
+    count: CountType
 }
 
 export const ButtonsGroup: React.FC<ButtonsPropsType> = (props) => {
@@ -13,12 +14,12 @@ export const ButtonsGroup: React.FC<ButtonsPropsType> = (props) => {
             <Button
                 changeCounter={props.incCount}
                     stile={'buttons-inc '}
-                    disable={props.count === 5 ? true : ''}
+                    disable={props.count.min === props.count.max ? true : ''}
                     value={'INC'}
             />
             <Button changeCounter={props.resetCount}
                     stile='buttons-reset'
-                    disable={props.count === 0 ? true : ''}
+                    disable={props.count.min === 0 ? true : ''}
                     value={'RESET'}
             />
         </div>
