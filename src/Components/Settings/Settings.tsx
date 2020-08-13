@@ -36,7 +36,7 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
     };
 
 
-    let func = () => {
+    let sendData = () => {
         if (minValue === maxValue || minValue > maxValue || minValue < 0) {
             console.log('BAD VALUES')
         } else {
@@ -56,7 +56,7 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
                         block={block}
             />
             <div className={'set'}>
-                <button onClick={func} disabled={block}>SET</button>
+                <button onClick={sendData} disabled={block}>SET</button>
             </div>
         </div>
     )
@@ -69,7 +69,6 @@ type ParametersType = {
     minValue: number
     block: boolean
 }
-
 export const Parameters: React.FC<ParametersType> = (props) => {
 
     const sendMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
