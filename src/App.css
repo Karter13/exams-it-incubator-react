@@ -1,6 +1,7 @@
 body {
-  background-color: #c4c8cc;
+    background-color: #c4c8cc;
 }
+
 .counter {
     margin: 100px auto;
     display: flex;
@@ -67,39 +68,40 @@ body {
 }
 
 .values {
-  padding: 5px;
-  font-weight: bold;
-  font-size: larger;
-  height: 50%;
-  border-radius: 20px;
-  border: 2px solid gray;
-  background-color: #c4c8cc;
+    padding: 5px;
+    font-weight: bold;
+    font-size: larger;
+    height: 50%;
+    border-radius: 20px;
+    border: 2px solid gray;
+    background-color: #c4c8cc;
 
 }
 
 .value {
-  display: flex;
-  justify-content: center;
-  margin: 10px;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
 }
 
-.value input{
-  width: 50%;
-  margin-left: 20px;
+.value input {
+    font-weight: bold;
+    width: 50%;
+    margin-left: 20px;
 }
 
 .set {
-  height: 50px;
-  margin-top: 20px;
-  padding: 10px 5px;
-  background-color: #c4c8cc;
-  border-radius: 20px;
+    height: 50px;
+    margin-top: 20px;
+    padding: 10px 5px;
+    background-color: #c4c8cc;
+    border-radius: 20px;
 }
 
-.set button{
-  width: 120px;
-  height: 50px;
-  font-weight: bold;
-  font-size: large;
-  background-color: #716a8b;
+.set button {
+    width: 120px;
+    height: 50px;
+    font-weight: bold;
+    font-size: large;
+    background-color: #716a8b;
 }

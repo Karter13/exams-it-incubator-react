@@ -1,5 +1,6 @@
 import React, {ChangeEvent, useState} from 'react';
 import {CountType} from '../../App';
+import styles from './Settings.module.css'
 
 export type SettingsPropsType = {
     addNewValue: (newCounterValue: CountType) => void;
@@ -8,12 +9,15 @@ export type SettingsPropsType = {
 export const Settings: React.FC<SettingsPropsType> = (props) => {
     const [maxValue, setMaxValue] = useState(props.count.max);
     const [minValue, setMinValue] = useState(props.count.min);
+    const [block, setBlock] = useState<boolean>(false);
 
     const changeMaxValue = (value: string) => {
         if (+value === +minValue || +value < 0 || +value < +minValue) {
+            setBlock(true);
             setMaxValue(+value);
             console.log('Incorrect value')
         } else {
+            setBlock(false);
             setMaxValue(+value);
             console.log('Enter values and press "set"')
         }
@@ -21,20 +25,23 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
 
     const changeMinValue = (value: string) => {
         if (+value === +maxValue || +value < 0 || +value > +maxValue) {
+            setBlock(true);
             setMinValue(+value);
             console.log('Incorrect value')
         } else {
+            setBlock(false);
             setMinValue(+value);
             console.log('Enter values and press "set"')
         }
     };
 
+
     let func = () => {
-        if(minValue === maxValue || minValue > maxValue || minValue < 0) {
+        if (minValue === maxValue || minValue > maxValue || minValue < 0) {
             console.log('BAD VALUES')
         } else {
             localStorage.setItem('key12', JSON.stringify({min: minValue, max: maxValue}));
-            let newCounterValue = { min: +minValue, max: +maxValue };
+            let newCounterValue = {min: +minValue, max: +maxValue};
             console.log(newCounterValue);
             props.addNewValue(newCounterValue);
         }
@@ -42,9 +49,14 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
 
     return (
         <div className={'settings'}>
-            <Parameters minValue={minValue} maxValue={maxValue} changeMinValue={changeMinValue} changeMaxValue={changeMaxValue}/>
+            <Parameters minValue={minValue}
+                        maxValue={maxValue}
+                        changeMinValue={changeMinValue}
+                        changeMaxValue={changeMaxValue}
+                        block={block}
+            />
             <div className={'set'}>
-                <button onClick={func}>SET</button>
+                <button onClick={func} disabled={block}>SET</button>
             </div>
         </div>
     )
@@ -55,6 +67,7 @@ type ParametersType = {
     changeMinValue: (value: string) => void
     maxValue: number
     minValue: number
+    block: boolean
 }
 
 export const Parameters: React.FC<ParametersType> = (props) => {
@@ -71,11 +84,13 @@ export const Parameters: React.FC<ParametersType> = (props) => {
         <div className={'values'}>
             <div className={'value'}>
                 <span>max value:</span>
-                <input value={props.maxValue} onChange={sendMaxValue} type="number"/>
+                <input className={props.block ? styles.error : styles.true} value={props.maxValue}
+                       onChange={sendMaxValue} type="number"/>
             </div>
             <div className={'value'}>
                 <span>start value:</span>
-                <input value={props.minValue} onChange={sendMinValue} type="number"/>
+                <input className={props.block ? styles.error : styles.true} value={props.minValue}
+                       onChange={sendMinValue} type="number"/>
             </div>
         </div>
     )

@@ -1,0 +1,7 @@
+.error {
+    border: red 3px solid;
+    background-color: #ff74c2;
+}
+.true {
+    border: #716a8b 3px solid;
+}
