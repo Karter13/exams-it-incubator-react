@@ -12,25 +12,25 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
     const [block, setBlock] = useState<boolean>(false);
 
     const changeMaxValue = (value: string) => {
-        if (+value === +minValue || +value < 0 || +value < +minValue) {
+        if (Number(value) === Number(minValue) || Number(value) < 0 || Number(value) < Number(minValue)) {
             setBlock(true);
-            setMaxValue(+value);
+            setMaxValue(Number(value));
             console.log('Incorrect value')
         } else {
             setBlock(false);
-            setMaxValue(+value);
+            setMaxValue(Number(value));
             console.log('Enter values and press "set"')
         }
     };
 
     const changeMinValue = (value: string) => {
-        if (+value === +maxValue || +value < 0 || +value > +maxValue) {
+        if (Number(value) === Number(maxValue) || Number(value) < 0 || Number(value) > Number(maxValue)) {
             setBlock(true);
-            setMinValue(+value);
+            setMinValue(Number(value));
             console.log('Incorrect value')
         } else {
             setBlock(false);
-            setMinValue(+value);
+            setMinValue(Number(value));
             console.log('Enter values and press "set"')
         }
     };
@@ -41,7 +41,7 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
             console.log('BAD VALUES')
         } else {
             localStorage.setItem('key12', JSON.stringify({min: minValue, max: maxValue}));
-            let newCounterValue = {min: +minValue, max: +maxValue};
+            let newCounterValue = {min: Number(minValue), max: Number(maxValue)};
             console.log(newCounterValue);
             props.addNewValue(newCounterValue);
         }
